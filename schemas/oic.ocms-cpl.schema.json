@@ -1,0 +1,211 @@
+{
+  "id": "https://github.com/openconnectivityfoundation/certification/blob/master/schemas/oic.ocms-cpl-schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "OCF Compliance Management System - Certified Products List",
+  "definitions": {
+    "ocms-cpl-sw-item": {
+      "type": "object",
+      "required": ["manufacturerName","manufacturerIANAId","model","swVersion"],
+      "properties": {
+        "manufacturerName": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Manufacturer's name"
+        },
+        "manufacturerIANAId": {
+            "type":"string",
+            "readOnly": true,
+            "description": "IANAId"
+        },
+        "model": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Model"
+        },
+        "swVersion": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Model version"
+        }
+       }
+    },
+    "ocms-cpl-hw-item": { 
+      "type": "object",
+      "required": ["manufacturerName","manufacturerIANAId","model","hwVersion","fwVersion"],
+      "properties": {
+        "manufacturerName": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Manufacturer's name"
+        },
+        "manufacturerIANAId": {
+            "type":"string",
+            "readOnly": true,
+            "description": "IANAId"
+        },
+        "model": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Model"
+        },
+        "hwVersion": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Hardware version"
+        },
+        "fwVersion": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Firmware version"
+        }
+       }
+    },
+    "ocms-cpl-item":{
+      "type": "object",
+      "required": ["manufacturerName","manufacturerIANAId","model","version","securityProfiles"],
+      "properties": {
+        "manufacturerName": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Manufacturer's name"
+        },
+        "manufacturerIANAId": {
+            "type":"string",
+            "readOnly": true,
+            "description": "IANAId"
+        },
+        "model": {
+            "type":"array",
+            "readOnly": true,
+            "description": "Model and Family Models supported",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "version": {
+            "type":"array",
+            "readOnly": true,
+            "description": "Model version(s) supported",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "OCFVersion": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Version(s) tested",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "OCFDevType": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Device Type(s) tested",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "OCFVertical": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Vertical(s) supported",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "CRSL": {
+            "type":"string",
+            "readOnly": true,
+            "description": "OCF Certification Requirements Status List"
+        },
+        "CPID": {
+            "type":"string",
+            "readOnly": true,
+            "description": "OCF Certified Product Identifier"
+        },
+        "CertificationDate": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Date of OCF Certification"
+        },
+        "CertificationStatus": {
+            "type":"string",
+            "readOnly": true,
+            "description": "Status of OCF Certification, e.g. Passed, Revoked"
+        },
+        "OCFResourceTypes": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Resource Type value(s)",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "securityProfiles": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Security Profile(s) tested",
+            "items": {
+                "type": "string",
+                "minItems": 1
+            }
+        },
+        "SW-Containers": {
+            "type":"array",
+            "readOnly": true,
+            "description": "Software dependencies/libraries used in OCF Certification",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/ocms-cpl-sw-item"
+            }
+        },
+        "HW-Containers": {
+            "type":"array",
+            "readOnly": true,
+            "description": "Hardware dependencies/libraries used in OCF Certification",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/ocms-cpl-hw-item"
+            }
+        }
+      }
+    },
+    "oic.ocms-cpl": {
+      "type": "object",
+      "required": ["dateCreated","currentOCFRelease","CPL"],
+      "properties": {
+        "dateCreated": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Date this OCF Compliance Management System - Certified Products List (OCMS-CPL) was generated."
+        },
+        "currentOCFRelease": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Current release of OCF Specification."
+        },
+        "CPL": {
+          "type": "array",
+          "readOnly": true,
+          "minItems": 1,
+          "description": "List of Certified Products",
+          "items": {
+                "$ref": "#/definitions/ocms-cpl-item"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "items": {
+    "$ref": "#/definitions/oic.ocms-cpl"
+  }
+}

@@ -32,7 +32,7 @@
             "description": "Model version"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "ocms-cpl-hw-item": {
       "type": "object",
@@ -69,11 +69,11 @@
             "description": "Firmware version"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "ocms-cpl-item":{
       "type": "object",
-      "required": ["manufacturername","manufacturerianaid","models","versions","securityprofiles"],
+      "required": ["manufacturername","manufacturerianaid","models","versions","ocfversions","crsls","cttversions","securityprofiles"],
       "properties": {
         "manufacturername": {
             "type":"string",
@@ -90,7 +90,7 @@
         "models": {
             "type":"array",
             "readOnly": true,
-            "description": "Model and Family Models supported",
+            "description": "Model and Family Models supported, First Model denotes Certified Device",
             "items": {
                 "type": "string",
                 "maxLength": 64,
@@ -110,7 +110,27 @@
         "ocfversions": {
             "type":"array",
             "readOnly": true,
-            "description": "OCF Version(s) tested",
+            "description": "OCF Version(s) tested, position in array correlates with crsls[] and cttversions[] arrays",
+            "items": {
+                "type": "string",
+                "maxLength": 64,
+                "minItems": 1
+            }
+        },
+        "crsls": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Certification Requirements Status List(s), position in array correlates with ocfversions[] and cttversions[] arrays",
+            "items": {
+                "type": "string",
+                "maxLength": 64,
+                "minItems": 1
+            }
+        },
+        "cttversions": {
+            "type":"array",
+            "readOnly": true,
+            "description": "OCF Certification Test Tool Version(s), position in array correlates with ocfversions[] and crsls[] arrays",
             "items": {
                 "type": "string",
                 "maxLength": 64,
@@ -136,12 +156,6 @@
                 "maxLength": 64,
                 "minItems": 1
             }
-        },
-        "crsl": {
-            "type":"string",
-            "maxLength": 64,
-            "readOnly": true,
-            "description": "OCF Certification Requirements Status List"
         },
         "cpid": {
             "type":"string",
@@ -199,7 +213,7 @@
             }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "oic.ocms-cpl": {
       "type": "object",
@@ -227,7 +241,7 @@
           }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     }
   },
   "allOf": [

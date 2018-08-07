@@ -1,0 +1,353 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OICOCMSCertifiedProductsList",
+    "version": "v1.0.0-20180712",
+    "license": {
+      "name": "copyright 2016-2017 Open Connectivity Foundation, Inc. All rights reserved.",
+      "x-description": "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n        1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n        2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n        THIS SOFTWARE IS PROVIDED BY THE Open Connectivity Foundation, INC. \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE OR WARRANTIES OF NON-INFRINGEMENT, ARE DISCLAIMED.\n        IN NO EVENT SHALL THE Open Connectivity Foundation, INC. OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/ocms-cpl.json" : {
+      "get": {
+        "description": "Returns the list of OCF Certified Products in JSON format.\n",
+        "parameters": [
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "datecreated":        "2018-07-12T18:25:43-05:00",
+                  "currentocfrelease":  "OCF 1.3.1",
+                  "cpl": [
+                    {
+                      "manufacturername": "NASA",
+                      "manufacturerianaid": "1.3.6.1.4.1.71",
+                      "models": ["Blaze Home"],
+                      "versions": ["3.1.5"],
+                      "ocfversions": ["1.3"],
+                      "crsls": ["4.2"],
+                      "cttversions": ["2.0"],
+                      "securityprofiles": ["oic.sec.sp.baseline"]
+                    }
+                  ]
+                }
+                ,
+              "schema": { "$ref": "#/definitions/oic.ocms-cpl" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+  },
+  "definitions": {
+    "oic.ocms-cpl" : {
+      "properties": {
+        "currentocfrelease" :
+                {
+          "description": "Current release of OCF Specification.",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+
+        "cpl" :
+                {
+          "description": "List of Certified Products",
+          "items": {
+            "$ref": "#/definitions/ocms-cpl-item"
+          },
+          "minItems": 1,
+          "readOnly": true,
+          "type": "array"
+        },
+
+        "datecreated" :
+                {
+          "description": "Date this OCF Compliance Management System - Certified Products List (OCMS-CPL) was generated.",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        }
+
+        }
+    }
+    ,"oic.ocms-cpl" :
+        {
+      "additionalProperties": true,
+      "properties": {
+        "cpl": {
+          "description": "List of Certified Products",
+          "items": {
+            "$ref": "#/definitions/ocms-cpl-item"
+          },
+          "minItems": 1,
+          "readOnly": true,
+          "type": "array"
+        },
+        "currentocfrelease": {
+          "description": "Current release of OCF Specification.",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "datecreated": {
+          "description": "Date this OCF Compliance Management System - Certified Products List (OCMS-CPL) was generated.",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "datecreated",
+        "currentocfrelease",
+        "cpl"
+      ],
+      "type": "object"
+    }
+
+    ,"ocms-cpl-sw-item" :
+        {
+      "additionalProperties": true,
+      "properties": {
+        "manufacturerianaid": {
+          "description": "IANAId",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "manufacturername": {
+          "description": "Manufacturer's name",
+          "readOnly": true,
+          "type": "string"
+        },
+        "model": {
+          "description": "Model",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "swversion": {
+          "description": "Model version",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "manufacturername",
+        "manufacturerianaid",
+        "model",
+        "swversion"
+      ],
+      "type": "object"
+    }
+
+    ,"ocms-cpl-hw-item" :
+        {
+      "additionalProperties": true,
+      "properties": {
+        "fwversion": {
+          "description": "Firmware version",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "hwversion": {
+          "description": "Hardware version",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "manufacturerianaid": {
+          "description": "IANAId",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "manufacturername": {
+          "description": "Manufacturer's name",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "model": {
+          "description": "Model",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "required": [
+        "manufacturername",
+        "manufacturerianaid",
+        "model",
+        "hwversion",
+        "fwversion"
+      ],
+      "type": "object"
+    }
+
+    ,"ocms-cpl-item" :
+        {
+      "additionalProperties": true,
+      "properties": {
+        "certificationdate": {
+          "description": "Date of OCF Certification",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "certificationstatus": {
+          "description": "Status of OCF Certification, e.g. Passed, Revoked",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "cpid": {
+          "description": "OCF Certified Product Identifier",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "crsls": {
+          "description": "OCF Certification Requirements Status List(s), position in array correlates with ocfversions[] and cttversions[] arrays",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "cttversions": {
+          "description": "OCF Certification Test Tool Version(s), position in array correlates with ocfversions[] and crsls[] arrays",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "hw-containers": {
+          "description": "Hardware dependencies/libraries used in OCF Certification",
+          "items": {
+            "$ref": "#/definitions/ocms-cpl-hw-item"
+          },
+          "minItems": 1,
+          "readOnly": true,
+          "type": "array"
+        },
+        "manufacturerianaid": {
+          "description": "IANAId",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "manufacturername": {
+          "description": "Manufacturer's name",
+          "maxLength": 64,
+          "readOnly": true,
+          "type": "string"
+        },
+        "models": {
+          "description": "Model and Family Models supported, First Model denotes Certified Device",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "ocfdevtypes": {
+          "description": "OCF Device Type(s) tested",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "ocfresourcetypes": {
+          "description": "OCF Resource Type value(s)",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "ocfversions": {
+          "description": "OCF Version(s) tested, position in array correlates with crsls[] and cttversions[] arrays",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "ocfvertical": {
+          "description": "OCF Vertical(s) supported",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "securityprofiles": {
+          "description": "OCF Security Profile(s) tested",
+          "items": {
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "sw-containers": {
+          "description": "Software dependencies/libraries used in OCF Certification",
+          "items": {
+            "$ref": "#/definitions/ocms-cpl-sw-item"
+          },
+          "minItems": 1,
+          "readOnly": true,
+          "type": "array"
+        },
+        "versions": {
+          "description": "Model version(s) supported",
+          "items": {
+            "maxLength": 64,
+            "minItems": 1,
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "required": [
+        "manufacturername",
+        "manufacturerianaid",
+        "models",
+        "versions",
+        "ocfversions",
+        "crsls",
+        "cttversions",
+        "securityprofiles"
+      ],
+      "type": "object"
+    }
+
+  }
+}

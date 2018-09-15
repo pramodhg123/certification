@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "OICOCMSCertifiedProductsList",
+    "title": "OICOCMSCertifiedProductList",
     "version": "v1.0.0-20180712",
     "license": {
       "name": "copyright 2016-2017 Open Connectivity Foundation, Inc. All rights reserved.",

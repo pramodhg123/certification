@@ -70,7 +70,7 @@
 
         "datecreated" :
                 {
-          "description": "Date this OCF Compliance Management System - Certified Products List (OCMS-CPL) was generated.",
+          "description": "Date this OCF Compliance Management System - Certified Product List (OCMS-CPL) was generated.",
           "maxLength": 64,
           "readOnly": true,
           "type": "string"
@@ -98,7 +98,7 @@
           "type": "string"
         },
         "datecreated": {
-          "description": "Date this OCF Compliance Management System - Certified Products List (OCMS-CPL) was generated.",
+          "description": "Date this OCF Compliance Management System - Certified Product List (OCMS-CPL) was generated.",
           "maxLength": 64,
           "readOnly": true,
           "type": "string"

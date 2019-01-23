@@ -48,8 +48,7 @@
                   "id":           "unique_example_id",
                   "value":  20.0,
                   "query-value":        "C"
-                }
-                ,
+                },
               "schema": { "$ref": "#/definitions/Query-Definition" }
             }
         }

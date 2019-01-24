@@ -163,7 +163,7 @@
         }
       },
       "type" : "object",
-      "required": ["valuesdd"]
+      "required": ["value"]
     }
   }
 }

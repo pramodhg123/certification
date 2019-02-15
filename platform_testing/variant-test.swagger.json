@@ -110,8 +110,7 @@
           "minimum": 0.0,
           "type": "number"
         },
-        "value-string" :
-                {
+        "value-string" : {
           "description": "value string.",
           "type": "string"
         },
@@ -128,13 +127,13 @@
               "oic.if.baseline",
               "oic.if.a"
             ],
+            "maxLength": 64,
             "type": "string"
           },
           "minItems": 1,
           "readOnly": true,
           "type": "array"
         }
-
       },
       "type" : "object",
       "required": ["value-string", "value-boolean","value-integer", "value-number"]

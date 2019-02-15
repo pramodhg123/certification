@@ -94,6 +94,7 @@
               "oic.if.baseline",
               "oic.if.s"
             ],
+            "maxLength": 64,
             "type": "string"
           },
           "minItems": 1,

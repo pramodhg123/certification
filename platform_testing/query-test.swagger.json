@@ -24,7 +24,8 @@
             "description": "query-value, only using A, B and C",
             "type": "string",
             "enum": ["A", "B", "C"],
-            "name": "query-value"
+            "name": "query-value",
+            "x-queryexample" : "/QueryTestResURI?query-value=A"
           }
         ],
         "responses": {

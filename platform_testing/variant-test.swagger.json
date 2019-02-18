@@ -25,12 +25,13 @@
               "description" : "",
               "x-example":
                 {
-                  "rt":     ["oic.r.test-variant"],
-                  "id":     "unique_example_id",
+                  "rt": ["oic.r.test-variant"],
+                  "if" : ["oic.if.a", "oic.if.baseline"],
+                  "id": "unique_example_id",
                   "value-integer": 75,
                   "value-number": 79.5,
                   "value-string": "my value",
-                  "value-boolean":   false
+                  "value-boolean": false
                 },
               "schema": { "$ref": "#/definitions/payloaddef" }
             }
@@ -50,7 +51,7 @@
                 "value-integer": 75,
                 "value-number": 79.5,
                 "value-string": "my value",
-                "value-boolean":   false
+                "value-boolean": false
               }
           }
         ],
@@ -59,11 +60,11 @@
               "description" : "",
               "x-example":
                 {
-                  "id":     "unique_example_id",
+                  "id": "unique_example_id",
                   "value-integer": 75,
                   "value-number": 79.5,
                   "value-string": "my value",
-                  "value-boolean":   false
+                  "value-boolean": false
                 },
               "schema": { "$ref": "#/definitions/payloaddef" }
             }

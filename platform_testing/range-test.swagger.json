@@ -25,9 +25,10 @@
               "description" : "",
               "x-example":
                 {
-                  "rt":           ["oic.r.query-test"],
-                  "id":           "unique_example_id",
-                  "value":  20.0,
+                  "rt": ["oic.r.query-test"],
+                  "if": ["oic.if.baseline","oic.if.a"],
+                  "id": "unique_example_id",
+                  "value": 20.0,
                   "range": [0.0,100.0],
                   "step" : 1.0
                 }
@@ -44,7 +45,7 @@
             "name": "body",
             "in": "body",
             "required": true,
-            "schema": { "$ref": "#/definitions/Range-Definition" },
+            "schema": { "$ref": "#/definitions/Range-Update" },
             "x-example":
               {
                 "value":  18.0
@@ -56,8 +57,9 @@
               "description" : "",
               "x-example":
                 {
-                  "id":          "unique_example_id",
-                  "value": 18.0
+                  "value": 20.0,
+                  "range": [0.0,100.0],
+                  "step" : 1.0
                 },
               "schema": { "$ref": "#/definitions/Range-Definition" }
             }
@@ -74,6 +76,16 @@
     }
   },
   "definitions": {
+    "Range-Update" : {
+      "properties": {
+        "value" : {
+          "description": "Current setting or measurement",
+          "type": "number"
+        }
+      },
+      "type" : "object",
+      "required": ["value"]
+    },
     "Range-Definition" : {
       "properties": {
         "rt" : {

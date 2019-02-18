@@ -26,6 +26,7 @@
               "x-example":
                 {
                   "rt":     ["oic.r.test-sensor"],
+                  "if" : ["oic.if.s", "oic.if.baseline"],
                   "id":     "unique_example_id",
                   "value-integer": 75,
                   "value-number": 79.5,

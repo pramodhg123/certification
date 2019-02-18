@@ -60,7 +60,6 @@
               "description" : "",
               "x-example":
                 {
-                  "id": "unique_example_id",
                   "value-integer": 75,
                   "value-number": 79.5,
                   "value-string": "my value",
@@ -125,8 +124,8 @@
           "description": "The interface set supported by this resource",
           "items": {
             "enum": [
-              "oic.if.baseline",
-              "oic.if.a"
+              "oic.if.a",
+              "oic.if.baseline"
             ],
             "maxLength": 64,
             "type": "string"

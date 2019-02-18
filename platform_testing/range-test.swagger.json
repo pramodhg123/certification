@@ -26,7 +26,7 @@
               "x-example":
                 {
                   "rt": ["oic.r.query-test"],
-                  "if": ["oic.if.baseline","oic.if.a"],
+                  "if": ["oic.if.a","oic.if.baseline"],
                   "id": "unique_example_id",
                   "value": 20.0,
                   "range": [0.0,100.0],
@@ -123,8 +123,8 @@
           "description": "The interface set supported by this resource",
           "items": {
             "enum": [
-              "oic.if.baseline",
-              "oic.if.a"
+              "oic.if.a",
+              "oic.if.baseline"
             ],
             "maxLength": 64,
             "type": "string"

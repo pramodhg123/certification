@@ -25,13 +25,13 @@
               "description" : "",
               "x-example":
                 {
-                  "rt":     ["oic.r.test-sensor"],
-                  "if" : ["oic.if.s", "oic.if.baseline"],
-                  "id":     "unique_example_id",
+                  "rt": ["oic.r.test-sensor"],
+                  "if": ["oic.if.s", "oic.if.baseline"],
+                  "id": "unique_example_id",
                   "value-integer": 75,
                   "value-number": 79.5,
                   "value-string": "my value",
-                  "value-boolean":   false
+                  "value-boolean": false
                 },
               "schema": { "$ref": "#/definitions/payloaddef" }
             }
@@ -92,8 +92,8 @@
           "description": "The interface set supported by this resource",
           "items": {
             "enum": [
-              "oic.if.baseline",
-              "oic.if.s"
+              "oic.if.s",
+              "oic.if.baseline"
             ],
             "maxLength": 64,
             "type": "string"

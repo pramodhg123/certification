@@ -127,7 +127,6 @@
             "C"
           ],
           "default" : "C",
-          "readOnly": true,
           "type": "string"
         },
         "n": {

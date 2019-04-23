@@ -9,7 +9,7 @@
             "name": "OCF Data Model License",
             "url": "https://openconnectivityfoundation.github.io/certification/schemas/oic.ocms-cpl-license-terms.md",
             "x-copyright": "Copyright 2019 Open Connectivity Foundation, Inc. All rights reserved."
-        },
+        }
     },
     "schemes": ["http"],
     "consumes": ["application/json"],

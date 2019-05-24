@@ -1,7 +1,7 @@
 {
   "id":"https://openconnectivityfoundation.github.io/certification/schemas/oic.ocms-cpl.schema.json",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2018-2019 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "OCF Compliance Management System - Certified Product List.  Used for retrieving OCF Certification testing status",
   "definitions": {
     "ocms-cpl-sw-item": {

@@ -25,7 +25,7 @@
               "description" : "",
               "x-example":
                 {
-                  "rt": ["oic.r.query-test"],
+                  "rt": ["oic.r.range-test"],
                   "if": ["oic.if.a","oic.if.baseline"],
                   "id": "unique_example_id",
                   "value": 20.0,

@@ -1,0 +1,142 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Range-Test",
+    "version": "20190613",
+    "license": {
+      "name": "OCF Data Model License",
+      "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
+      "x-copyright": "copyright 2019 Open Connectivity Foundation, Inc. All rights reserved."
+    },
+    "termsOfService": "https://openconnectivityfoundation.github.io/core/DISCLAIMER.md"
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/RangeTestResURI" : {
+      "get": {
+        "description": "This resource describes a test resource with a required range parameter.\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface"}
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt": ["oic.r.range-test"],
+                  "if": ["oic.if.a","oic.if.baseline"],
+                  "id": "unique_example_id",
+                  "value": 20.0,
+                  "range": [0.0,100.0],
+                  "step" : 2.0
+                }
+                ,
+              "schema": { "$ref": "#/definitions/Range-Definition" }
+            }
+        }
+      },
+      "post": {
+        "description": "Sets the desired value.\nIf a unit is included and the server does not support the unit indicated the request will fail.\nIf the units are omitted value is taken to be in C.\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface"},
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Range-Update" },
+            "x-example":
+              {
+                "value":  18.0
+              }
+          }
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "value": 18.0,
+                  "range": [0.0,100.0],
+                  "step" : 2.0
+                },
+              "schema": { "$ref": "#/definitions/Range-Definition" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "interface" : {
+      "in" : "query",
+      "name" : "if",
+      "type" : "string",
+      "enum" : ["oic.if.a", "oic.if.baseline"]
+    }
+  },
+  "definitions": {
+    "Range-Update" : {
+      "properties": {
+        "value" : {
+          "description": "Current setting or measurement",
+          "type": "number"
+        }
+      },
+      "type" : "object",
+      "required": ["value"]
+    },
+    "Range-Definition" : {
+      "properties": {
+        "rt" : {
+          "description": "Resource Type",
+          "items": {
+            "maxLength": 64,
+            "type": "string",
+            "enum": ["oic.r.test-range"]
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "value" : {
+          "description": "Current setting or measurement",
+          "type": "number"
+        },
+        "n": {
+          "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/n"
+        },
+        "id": {
+          "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/id"
+        },
+        "precision" : {
+          "$ref": "https://openconnectivityfoundation.github.io/IoTDataModels/schemas/oic.baseresource.properties-schema.json#/definitions/precision"
+        },
+        "range" :  {
+          "$ref": "https://openconnectivityfoundation.github.io/IoTDataModels/schemas/oic.baseresource.properties-schema.json#/definitions/range_number"
+        },
+        "step" : {
+          "$ref": "https://openconnectivityfoundation.github.io/IoTDataModels/schemas/oic.baseresource.properties-schema.json#/definitions/step_number"
+        },
+        "if" : {
+          "description": "The interface set supported by this resource",
+          "items": {
+            "enum": [
+              "oic.if.a",
+              "oic.if.baseline"
+            ],
+            "maxLength": 64,
+            "type": "string"
+          },
+          "minItems": 2,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type" : "object",
+      "required": ["value", "range", "step"]
+    }
+  }
+}

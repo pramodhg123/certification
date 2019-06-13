@@ -2,11 +2,11 @@
   "swagger": "2.0",
   "info": {
     "title": "Range-Test",
-    "version": "v1.1.0-20160519",
+    "version": "20190613",
     "license": {
       "name": "OCF Data Model License",
       "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
-      "x-copyright": "copyright 2016-2017, 2019 Open Connectivity Foundation, Inc. All rights reserved."
+      "x-copyright": "copyright 2019 Open Connectivity Foundation, Inc. All rights reserved."
     },
     "termsOfService": "https://openconnectivityfoundation.github.io/core/DISCLAIMER.md"
   },
@@ -30,7 +30,7 @@
                   "id": "unique_example_id",
                   "value": 20.0,
                   "range": [0.0,100.0],
-                  "step" : 1.0
+                  "step" : 2.0
                 }
                 ,
               "schema": { "$ref": "#/definitions/Range-Definition" }
@@ -57,9 +57,9 @@
               "description" : "",
               "x-example":
                 {
-                  "value": 20.0,
+                  "value": 18.0,
                   "range": [0.0,100.0],
-                  "step" : 1.0
+                  "step" : 2.0
                 },
               "schema": { "$ref": "#/definitions/Range-Definition" }
             }

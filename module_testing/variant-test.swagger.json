@@ -1,0 +1,143 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "test variants",
+    "version": "20190613",
+    "license": {
+      "name": "OCF Data Model License",
+      "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
+      "x-copyright": "copyright 2019 Open Connectivity Foundation, Inc. All rights reserved."
+    },
+    "termsOfService": "https://openconnectivityfoundation.github.io/core/DISCLAIMER.md"
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/variantResURI" : {
+      "get": {
+        "description": "This resource defines setting of number, integer boolean and string.\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface"}
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt": ["oic.r.test-variant"],
+                  "if" : ["oic.if.a", "oic.if.baseline"],
+                  "id": "unique_example_id",
+                  "value-integer": 75,
+                  "value-number": 79.5,
+                  "value-string": "my value",
+                  "value-boolean": false
+                },
+              "schema": { "$ref": "#/definitions/payloaddef" }
+            }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {"$ref": "#/parameters/interface"},
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/payloaddef" },
+            "x-example":
+              {
+                "value-integer": 75,
+                "value-number": 79.5,
+                "value-string": "my value",
+                "value-boolean": false
+              }
+          }
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "value-integer": 75,
+                  "value-number": 79.5,
+                  "value-string": "my value",
+                  "value-boolean": false
+                },
+              "schema": { "$ref": "#/definitions/payloaddef" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "interface" : {
+      "in" : "query",
+      "name" : "if",
+      "type" : "string",
+      "enum" : ["oic.if.a", "oic.if.baseline"]
+    }
+  },
+  "definitions": {
+    "payloaddef" : {
+      "properties": {
+        "rt" :  {
+          "description": "Resource Type",
+          "items": {
+            "maxLength": 64,
+            "type": "string",
+            "enum": ["oic.r.test-variant"]
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "value-boolean" : {
+          "description": "on/off",
+          "type": "boolean"
+        },
+        "value-integer" : {
+          "description": "value integer.",
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "value-number" : {
+          "description": "value number.",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        "value-string" : {
+          "description": "value string, using a different length than the default lenght.",
+          "maxLength": 100,
+          "type": "string"
+        },
+        "n": {
+          "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/n"
+        },
+        "id": {
+          "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/id"
+        },
+        "if" : {
+          "description": "The interface set supported by this resource",
+          "items": {
+            "enum": [
+              "oic.if.a",
+              "oic.if.baseline"
+            ],
+            "maxLength": 64,
+            "type": "string"
+          },
+          "minItems": 1,
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type" : "object",
+      "required": ["value-string", "value-boolean","value-integer", "value-number"]
+    }
+  }
+}

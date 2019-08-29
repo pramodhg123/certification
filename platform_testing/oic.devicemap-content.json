@@ -1,0 +1,20 @@
+[
+  {
+    "devicename": "Module Test - Actuator Device",
+    "devicetype": "oic.d.test-module-actuator",
+    "vertical":   "Smart Home",
+    "resources": [
+      {"resourcetypetitle": "Query Test", "resourcetypeid": "oic.r.query-test"},
+      {"resourcetypetitle": "Range Test", "resourcetypeid": "oic.r.range-test"},
+      {"resourcetypetitle": "Variant Test (multiple types)", "resourcetypeid": "oic.r.test-variant"}
+    ]
+  },
+  {
+    "devicename": "Module Test - Sensor Device",
+    "devicetype": "oic.d.test-module-sensor",
+    "vertical":   "Smart Home",
+    "resources": [
+      {"resourcetypetitle": "Sensor Test", "resourcetypeid": "oic.r.test-sensor"}
+    ]
+  }
+]

@@ -2,7 +2,7 @@
   {
     "devicename": "Module Test - Actuator Device",
     "devicetype": "oic.d.test-module-actuator",
-    "vertical":   "Smart Home",
+    "vertical":   "Module",
     "resources": [
       {"resourcetypetitle": "Query Test", "resourcetypeid": "oic.r.query-test"},
       {"resourcetypetitle": "Range Test", "resourcetypeid": "oic.r.range-test"},
@@ -12,7 +12,7 @@
   {
     "devicename": "Module Test - Sensor Device",
     "devicetype": "oic.d.test-module-sensor",
-    "vertical":   "Smart Home",
+    "vertical":   "Module",
     "resources": [
       {"resourcetypetitle": "Sensor Test", "resourcetypeid": "oic.r.test-sensor"}
     ]

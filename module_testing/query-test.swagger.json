@@ -33,7 +33,7 @@
               "description" : "",
               "x-example":
                 {
-                  "rt": ["oic.r.query-test"],
+                  "rt": ["oic.r.test-query"],
                   "if": ["oic.if.a", "oic.if.baseline"],
                   "id": "unique_example_id",
                   "value": 20.0,

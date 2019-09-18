@@ -4,8 +4,8 @@
     "devicetype": "oic.d.test-module-actuator",
     "vertical":   "Module",
     "resources": [
-      {"resourcetypetitle": "Query Test", "resourcetypeid": "oic.r.query-test"},
-      {"resourcetypetitle": "Range Test", "resourcetypeid": "oic.r.range-test"},
+      {"resourcetypetitle": "Query Test", "resourcetypeid": "oic.r.test-query"},
+      {"resourcetypetitle": "Range Test", "resourcetypeid": "oic.r.test-range"},
       {"resourcetypetitle": "Variant Test (multiple types)", "resourcetypeid": "oic.r.test-variant"}
     ]
   },

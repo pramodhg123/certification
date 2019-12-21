@@ -1,0 +1,576 @@
+"devAddr": {
+        "adapter": 1,
+        "flags": 32,
+        "ifindex": 13,
+        "port": 63851,
+        "addr": "fe80::2ccd:ecc0:7b48:48ec%13"
+    },
+    "addr": {
+        "adapter": 1,
+        "flags": 32,
+        "ifindex": 13,
+        "port": 63851,
+        "addr": "fe80::2ccd:ecc0:7b48:48ec%13"
+    },
+    "payload": {
+        "type": 1,
+        "sid": "08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+        "resources": [
+            {
+                "uri": "/oic/sec/doxm",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.doxm"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::3a",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::d2",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "192.168.1.99",
+                        "family": 64,
+                        "port": 63853,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/pstat",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.pstat"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/acl2",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.acl2"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/cred",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.cred"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/crl",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.crl"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/csr",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.csr"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/sec/roles",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.roles"
+                ],
+                "interfaces": [
+                    "oic.if.baseline"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/d",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.wk.d",
+                    "oic.d.speaker"
+                ],
+                "interfaces": [
+                    "oic.if.baseline",
+                    "oic.if.r"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::3a",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::d2",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "192.168.1.99",
+                        "family": 64,
+                        "port": 63853,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/oic/p",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.wk.p"
+                ],
+                "interfaces": [
+                    "oic.if.baseline",
+                    "oic.if.r"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::3a",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fd00::d2",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 32,
+                        "port": 63851,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coap",
+                        "addr": "192.168.1.99",
+                        "family": 64,
+                        "port": 63853,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/introspection",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.wk.introspection"
+                ],
+                "interfaces": [
+                    "oic.if.baseline",
+                    "oic.if.r"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/BinarySwitchResURI",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.switch.binary"
+                ],
+                "interfaces": [
+                    "oic.if.baseline",
+                    "oic.if.a"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            },
+            {
+                "uri": "/AudioResURI",
+                "anchor": "ocf://08cbd1ca-441f-4a95-a060-4b26acbd56c5",
+                "types": [
+                    "oic.r.audio"
+                ],
+                "interfaces": [
+                    "oic.if.baseline",
+                    "oic.if.a"
+                ],
+                "bitmap": 1,
+                "secure": false,
+                "port": 0,
+                "eps": [
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::3a",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fd00::d2",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "fe80::2ccd:ecc0:7b48:48ec%2513",
+                        "family": 48,
+                        "port": 63852,
+                        "pri": 1
+                    },
+                    {
+                        "tps": "coaps",
+                        "addr": "192.168.1.99",
+                        "family": 80,
+                        "port": 63854,
+                        "pri": 1
+                    }
+                ]
+            }
+        ]
+    },
+    "connType": 65568,
+    "identity": [],
+    "result": 0,
+    "sequenceNumber": 16777216,
+    "resourceUri": "/oic/res"
+}

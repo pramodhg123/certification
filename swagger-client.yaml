@@ -1,0 +1,567 @@
+---
+swagger: "2.0"
+info:
+  version: "0.9"
+  title: "Interop"
+host: "localhost:8083"
+basePath: "/"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /discover:
+    get:
+      description: "Returns discovered devices to the caller. addressType should d_m -multicast or d_u - unitcast "
+      operationId: "discover"
+      parameters:
+      - name: "addressType"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/discoverResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "discover"
+  /discoverDevice:
+    post:
+      description: "Returns discovered devices to the caller"
+      operationId: "discoverDevice"
+      parameters:
+      - in: "body"
+        name: "DeviceDetails"
+        description: "Device Details."
+        required: true
+        schema:
+          $ref: "#/definitions/discoverDeviceData"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/discoverDeviceResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "discover"
+  /discoverRT:
+    get:
+      description: "Returns discovered devices to the caller.rt should be like oic.r.switch.binary or other valid ones"
+      operationId: "discoverRT"
+      parameters:
+      - name: "rt"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/discoverRTResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "discoverRT"
+  /discoverIF:
+    get:
+      description: "Returns discovered devices to the caller. if shouild be the interface which is needed for discovery. oic.if.baseline or other valid ones"
+      operationId: "discoverIF"
+      parameters:
+      - name: "if"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/discoverIFResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "discoverIF"
+  /onBoard:
+    post:
+      description: "Returns success or failure to the caller"
+      operationId: "onBoard"
+      parameters:
+      - in: "body"
+        name: "OnBoardData"
+        description: "OnBoard Data."
+        required: true
+        schema:
+          $ref: "#/definitions/OnBoardData"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/onBoardResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "onBoard"
+  /getData:
+    post:
+      description: "Returns resources information of the device to the caller"
+      operationId: "getData"
+      parameters:
+      - in: "body"
+        name: "getData"
+        description: "Device data required to get the details."
+        required: true
+        schema:
+          $ref: "#/definitions/getData"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/getDataResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "getData"
+  /putData:
+    get:
+      description: "Used to set the values of the devices and returns success or failure to the caller"
+      operationId: "putData"
+      parameters:
+      - in: "body"
+        name: "putData"
+        description: "Device details to be set."
+        required: true
+        schema:
+          $ref: "#/definitions/putData"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/putDataResponse"
+        default:
+          description: "Error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Client"
+    x-swagger-router-controller: "putData"
+  /swagger:
+    x-swagger-pipe: "swagger_raw"
+definitions:
+  discoverResponse:
+    properties:
+      status:
+        type: "string"
+      data:
+        $ref: "#/definitions/discoverResponse_data"
+    example:
+      status: "success or failure"
+      data: "refer discovery.json"
+  discoverDeviceData:
+    type: "object"
+    required:
+    - "adapter"
+    - "addr"
+    - "flags"
+    - "ifindex"
+    - "port"
+    properties:
+      adapter:
+        type: "integer"
+      flags:
+        type: "integer"
+      ifindex:
+        type: "integer"
+      port:
+        type: "integer"
+      addr:
+        type: "string"
+    example:
+      adapter: 1
+      flags: 32
+      ifindex: 13
+      port: 63851
+      addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+  discoverRTResponse:
+    properties:
+      status:
+        type: "string"
+      data:
+        $ref: "#/definitions/discoverRTResponse_data"
+    example:
+      status: "success or failure"
+      data: "refer discovery.json"
+  discoverIFResponse:
+    properties:
+      status:
+        type: "string"
+      data:
+        $ref: "#/definitions/discoverResponse_data"
+    example:
+      status: "success or failure"
+      data: "refer discovery.json"
+  OnBoardData:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+      justworks:
+        type: "boolean"
+      randompin:
+        type: "boolean"
+      mfCertificate:
+        type: "boolean"
+    example:
+      mfCertificate: true
+      justworks: true
+      id: "id"
+      randompin: true
+  onBoardResponse:
+    properties:
+      status:
+        type: "boolean"
+    example:
+      status: true
+  getData:
+    type: "object"
+    required:
+    - "uri"
+    properties:
+      devAddr:
+        $ref: "#/definitions/devAddr"
+      uri:
+        type: "string"
+    example:
+      devAddr:
+        adapter: 1
+        flags: 32
+        ifindex: 13
+        port: 63851
+        addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+  putData:
+    type: "object"
+    required:
+    - "auth"
+    - "devAddr"
+    - "id"
+    - "pin"
+    - "room"
+    - "room1"
+    - "switchval"
+    - "uri"
+    properties:
+      devAddr:
+        $ref: "#/definitions/devAddr"
+      id:
+        type: "string"
+      uri:
+        type: "string"
+      room:
+        type: "string"
+      pin:
+        type: "string"
+      room1:
+        type: "string"
+      auth:
+        type: "string"
+      switchval:
+        type: "string"
+    example:
+      devAddr:
+        adapter: 1
+        flags: 32
+        ifindex: 13
+        port: 63851
+        addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+  getDataResponse:
+    properties:
+      status:
+        type: "boolean"
+    example:
+      status: true
+  putDataResponse:
+    properties:
+      status:
+        type: "boolean"
+    example:
+      status: true
+  ErrorResponse:
+    required:
+    - "status"
+    properties:
+      status:
+        type: "string"
+  devAddr:
+    type: "object"
+    required:
+    - "adapter"
+    - "addr"
+    - "flags"
+    - "ifindex"
+    - "port"
+    properties:
+      adapter:
+        type: "integer"
+      flags:
+        type: "integer"
+      ifindex:
+        type: "integer"
+      port:
+        type: "integer"
+      addr:
+        type: "string"
+    example:
+      adapter: "1,"
+      flags: "32,"
+      ifindex: "13,"
+      port: "63851,"
+      addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+  resourceUri:
+    type: "object"
+    required:
+    - "anchor"
+    - "bitmap"
+    - "eps"
+    - "interfaces"
+    - "port"
+    - "secure"
+    - "types"
+    - "uri"
+    properties:
+      uri:
+        type: "string"
+      anchor:
+        type: "string"
+      types:
+        type: "array"
+        items:
+          type: "string"
+      interfaces:
+        type: "array"
+        items:
+          type: "string"
+      bitmap:
+        type: "integer"
+      secure:
+        type: "boolean"
+      port:
+        type: "integer"
+      eps:
+        $ref: "#/definitions/eps"
+    example:
+      types:
+      - "types"
+      - "types"
+      interfaces:
+      - "interfaces"
+      - "interfaces"
+      port: 1
+      anchor: "anchor"
+      bitmap: 6
+      eps:
+        tps: "coaps"
+        addr: "fd00::3a"
+        family: 48
+        port: 63852
+        pri: 1
+      secure: true
+      uri: "uri"
+  eps:
+    type: "object"
+    required:
+    - "addr"
+    - "family"
+    - "port"
+    - "pri"
+    - "tps"
+    properties:
+      tps:
+        type: "string"
+      addr:
+        type: "string"
+      family:
+        type: "integer"
+      port:
+        type: "integer"
+      pri:
+        type: "integer"
+    example:
+      tps: "coaps"
+      addr: "fd00::3a"
+      family: 48
+      port: 63852
+      pri: 1
+  discoverResponse_data_payload:
+    type: "object"
+    required:
+    - "connType"
+    - "identify"
+    - "resourceUri"
+    - "resources"
+    - "result"
+    - "sequenceNumber"
+    - "sid"
+    - "type"
+    properties:
+      type:
+        type: "integer"
+      sid:
+        type: "string"
+      resources:
+        $ref: "#/definitions/resourceUri"
+      connType:
+        type: "integer"
+      identify:
+        type: "array"
+        items:
+          type: "string"
+      result:
+        type: "integer"
+      sequenceNumber:
+        type: "integer"
+      resourceUri:
+        type: "string"
+    example:
+      result: 5
+      sequenceNumber: 2
+      identify:
+      - "identify"
+      - "identify"
+      connType: 5
+      resources:
+        types:
+        - "types"
+        - "types"
+        interfaces:
+        - "interfaces"
+        - "interfaces"
+        port: 1
+        anchor: "anchor"
+        bitmap: 6
+        eps:
+          tps: "coaps"
+          addr: "fd00::3a"
+          family: 48
+          port: 63852
+          pri: 1
+        secure: true
+        uri: "uri"
+      resourceUri: "resourceUri"
+      type: 0
+      sid: "sid"
+  discoverResponse_data:
+    type: "object"
+    properties:
+      devAddr:
+        $ref: "#/definitions/devAddr"
+      addr:
+        $ref: "#/definitions/devAddr"
+      payload:
+        $ref: "#/definitions/discoverResponse_data_payload"
+  discoverDeviceResponse:
+    type: "object"
+    properties:
+      devAddr:
+        $ref: "#/definitions/devAddr"
+      addr:
+        $ref: "#/definitions/devAddr"
+      payload:
+        $ref: "#/definitions/discoverResponse_data_payload"
+    example:
+      devAddr:
+        adapter: "1,"
+        flags: "32,"
+        ifindex: "13,"
+        port: "63851,"
+        addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+      payload:
+        result: 5
+        sequenceNumber: 2
+        identify:
+        - "identify"
+        - "identify"
+        connType: 5
+        resources:
+          types:
+          - "types"
+          - "types"
+          interfaces:
+          - "interfaces"
+          - "interfaces"
+          port: 1
+          anchor: "anchor"
+          bitmap: 6
+          eps:
+            tps: "coaps"
+            addr: "fd00::3a"
+            family: 48
+            port: 63852
+            pri: 1
+          secure: true
+          uri: "uri"
+        resourceUri: "resourceUri"
+        type: 0
+        sid: "sid"
+      addr:
+        adapter: "1,"
+        flags: "32,"
+        ifindex: "13,"
+        port: "63851,"
+        addr: "fe80::2ccd:ecc0:7b48:48ec%13"
+  discoverRTResponse_data_payload:
+    type: "object"
+    required:
+    - "connType"
+    - "identify"
+    - "resourceUri"
+    - "resources"
+    - "result"
+    - "sequenceNumber"
+    - "sid"
+    - "type"
+    properties:
+      type:
+        type: "integer"
+      sid:
+        type: "string"
+      resources:
+        $ref: "#/definitions/resourceUri"
+      connType:
+        type: "integer"
+      identify:
+        type: "array"
+        items:
+          type: "string"
+      result:
+        type: "integer"
+      sequenceNumber:
+        type: "integer"
+      resourceUri:
+        type: "string"
+  discoverRTResponse_data:
+    type: "object"
+    properties:
+      devAddr:
+        $ref: "#/definitions/devAddr"
+      addr:
+        $ref: "#/definitions/devAddr"
+      payload:
+        $ref: "#/definitions/discoverRTResponse_data_payload"

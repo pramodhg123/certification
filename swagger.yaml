@@ -1,614 +1,667 @@
----
-swagger: "2.0"
+swagger: '2.0'
 info:
-  version: "0.9"
-  title: "Interop"
-host: "localhost:8081"
-basePath: "/"
+  version: '0.9'
+  title: Interop
+host: 'localhost:8081'
+basePath: /
 schemes:
-- "http"
-- "https"
+  - http
+  - https
 consumes:
-- "application/json"
+  - application/json
 produces:
-- "application/json"
+  - application/json
 paths:
   /clientStart:
     get:
-      description: "Returns OCF Client Status to the caller after starting the client.\
-        \ Started is the response"
-      operationId: "clientStart"
+      description: 'Starts OCF in Client Mode, and Returns the Status'
+      operationId: clientStart
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/clientStartResponse"
+            $ref: '#/definitions/clientStartResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "clientStart"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: clientStart
   /clientStop:
     get:
-      description: "Returns OCF Client Stop Status to the caller. Stopped or Running\
-        \ is the response string"
-      operationId: "clientStop"
+      description: 'Stops OCF Client Mode, and Returns the Status'
+      operationId: clientStop
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/clientStopResponse"
+            $ref: '#/definitions/clientStopResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "clientStop"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: clientStop
   /clientStatus:
     get:
-      description: "Returns OCF Client Status to the caller.  Stopped or Running\
-        \ is the response string"
-      operationId: "clientStatus"
+      description: 'Returns Status of OCF Client '
+      operationId: clientStatus
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/clientStatusResponse"
+            $ref: '#/definitions/clientStatusResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "clientStatus"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: clientStatus
   /getVersion:
     get:
-      description: "Returns version details of the software and OS to the caller"
-      operationId: "getVersion"
+      description: 'Returns Software Version, i.e. ToolVersion, IotivityVersion, OS Used, Build Date Time'
+      operationId: getVersion
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/getVersionResponse"
+            $ref: '#/definitions/getVersionResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "clientStatus"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: clientStatus
   /createDevice:
     get:
-      description: "Creates the device and returns the status and UUID. \
-           \ deviceType is the standard device types as per OCF.Ex: oic.d.light"
-      operationId: "createDevice"
+      description: 'Creates an OCF Device and Returns the Status, deviceType should be oic.d.light or other valid ones'
+      operationId: createDevice
       parameters:
-      - name: "deviceType"
-        in: "query"
-        required: true
-        type: "string"
+        - name: deviceType
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/createDeviceResponse"
+            $ref: '#/definitions/createDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "createDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: createDevice
   /deleteDevice:
     get:
-      description: "Returns Deletion status to the caller. \
-       \ Input parameter id is the uuid of the device"
-      operationId: "deleteDevice"
+      description: 'Deletes the Device and Returns the Status, id should be the DeviceID to be Deleted'
+      operationId: deleteDevice
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/deleteDeviceResponse"
+            $ref: '#/definitions/deleteDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "deleteDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: deleteDevice
   /otmResetDevice:
     get:
-      description: "Performs OTM Reset of Device and returns status to the caller.\
-              \ Input parameter id is the uuid of the device"
-      operationId: "otmResetDevice"
+      description: 'Performs OTM Reset of the Device and Returns the Status, id sshould be the DeviceID to be OTM Reset'
+      operationId: otmResetDevice
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/otmResetDeviceResponse"
+            $ref: '#/definitions/otmResetDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "otmResetDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: otmResetDevice
   /shutdownDevice:
     get:
-      description: "Performs shutdown of the device and returns status to the caller. \
-       \ Input parameter id is the uuid of the device"
-      operationId: "shutdownDevice"
+      description: 'Shutdown the Device and Return the Status, id should be DeviceID to be ShutDown'
+      operationId: shutdownDevice
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/shutdownDeviceResponse"
+            $ref: '#/definitions/shutdownDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "shutdownDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: shutdownDevice
   /restartDevice:
     get:
-      description: "Restarts the device and returns status to the caller. \
-            \ Input parameter id is the uuid of the device"
-      operationId: "restartDevice"
+      description: 'Re-Start the Device and Return the Status, id should be the DeviceID to be Restarted'
+      operationId: restartDevice
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/restartDeviceResponse"
+            $ref: '#/definitions/restartDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "restartDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: restartDevice
   /getIP:
     get:
-      description: "Returns IP of the system to the caller"
-      operationId: "getIP"
+      description: 'Returns IP Address of the System, eg. 192.168:0.4, fe80::fd00'
+      operationId: getIP
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/getIPResponse"
+            $ref: '#/definitions/getIPResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "getIP"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: getIP
   /getNetworkDetails:
     get:
-      description: "Returns Network details of the system to the caller"
-      operationId: "getNetworkDetails"
+      description: 'Returns Network Details of the System, i.e. Details about Ethernet, WIFI, Bluetooth'
+      operationId: getNetworkDetails
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/getNetworkDetailsResponse"
+            $ref: '#/definitions/getNetworkDetailsResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "getNetworkDetailsResponse"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: getNetworkDetailsResponse
   /showShutdownDevice:
     get:
-      description: "Returns shutdown devices of the system to the caller"
-      operationId: "showShutdownDevice"
+      description: 'Returns Shutdown Devices of the System, gets DeviceID of the Devices that are ShutDown'
+      operationId: showShutdownDevice
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/showShutdownDeviceResponse"
+            $ref: '#/definitions/showShutdownDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "showShutdownDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: showShutdownDevice
   /createCustomDevice:
     post:
-      description: "Creates a custom device and returns status to the caller"
-      operationId: "createCustomDevice"
+      description: 'Creates a Custom Device and Returns the Status, createCustomDevice should be oic.d.ac or other valid ones'
+      operationId: createCustomDevice
       parameters:
-      - in: "body"
-        name: "createCustomDevice"
-        description: "Create a custom device"
-        required: true
-        schema:
-          $ref: "#/definitions/createCustomDeviceData"
+        - in: body
+          name: createCustomDevice
+          description: Create a custom device
+          required: true
+          schema:
+            $ref: '#/definitions/createCustomDeviceData'
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/createCustomDeviceResponse"
+            $ref: '#/definitions/createCustomDeviceResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "createCustomDevice"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: createCustomDevice
   /getPollingData:
     get:
-      description: "Returns polling data of the specific device to the caller. \
-           \ Input parameter id is the uuid of the device"
-      operationId: "getPollingData"
+      description: 'Returns Polling Data of the Specific Device, i.e. Data to be sent or Received'
+      operationId: getPollingData
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/getPollingDataResponse"
+            $ref: '#/definitions/getPollingDataResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "getPollingDataResponse"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: getPollingDataResponse
   /getDeviceSettingData:
     get:
-      description: "Returns device setting data to the caller. \
-           \ Input parameter id is the uuid of the device"
-      operationId: "getDeviceSettingData"
+      description: 'Returns Device Setting Data, i.e. Status of JustWorks, RandomPin and ManufacturingCertificate'
+      operationId: getDeviceSettingData
       parameters:
-      - name: "id"
-        in: "query"
-        required: true
-        type: "string"
+        - name: id
+          in: query
+          required: true
+          type: string
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/getDeviceSettingDataResponse"
+            $ref: '#/definitions/getDeviceSettingDataResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "getDeviceSettingDataResponse"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: getDeviceSettingDataResponse
   /updateOTMSupport:
     post:
-      description: "Set OTM support of the device"
-      operationId: "updateOTMSupport"
+      description: 'Update OTM Support of the Device, i.e. JustWorks, RandomPin and ManufacturingCertificate'
+      operationId: updateOTMSupport
       parameters:
-      - in: "body"
-        name: "OTMUpdate"
-        description: "OTM update support."
-        required: true
-        schema:
-          $ref: "#/definitions/OTMUpdate"
+        - in: body
+          name: OTMUpdate
+          description: OTM update support.
+          required: true
+          schema:
+            $ref: '#/definitions/OTMUpdate'
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/updateOTMSupportResponse"
+            $ref: '#/definitions/updateOTMSupportResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "updateOTMSupportResponse"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: updateOTMSupportResponse
   /turnOffDevices:
     get:
-      description: "turns off all the devices available"
-      operationId: "turnOffDevices"
+      description: Switch-Off the Devices Available
+      operationId: turnOffDevices
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/turnOffDevicesResponse"
+            $ref: '#/definitions/turnOffDevicesResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "turnOffDevices"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: turnOffDevices
+  /sendPing:
+    get:
+      description: 'Send Ping Message, Message should have IP along with Port e.g. 192.168.0.3:5789'
+      operationId: sendPing
+      parameters:
+        - in: query
+          name: IP Address
+          type: string
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: '#/definitions/sendPingResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: sendPing
   /saveProfile:
     get:
-      description: "saves the devices available information in a json file"
-      operationId: "saveProfile"
+      description: Save the Devices Available Information in a JSON File
+      operationId: saveProfile
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/saveProfileResponse"
+            $ref: '#/definitions/saveProfileResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "saveProfile"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: saveProfile
   /downloadProfile:
     get:
-      description: "saves the devices available information in a json file"
-      operationId: "downloadProfile"
+      description: Downloads the Devices Available Information in a JSON File
+      operationId: downloadProfile
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/downloadProfileResponse"
+            $ref: '#/definitions/downloadProfileResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "downloadProfile"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: downloadProfile
   /loadProfile:
     get:
-      description: "Instantiates all the devices available in the json file"
-      operationId: "loadProfile"
+      description: Instantiates all the Devices Available in the JSON File
+      operationId: loadProfile
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/loadProfileResponse"
+            $ref: '#/definitions/loadProfileResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "loadProfile"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: loadProfile
   /downloadLogfile:
     get:
-      description: "returns the log file available on the device"
-      operationId: "downloadLogfile"
+      description: Download the Log File
+      operationId: downloadLogfile
       parameters: []
       responses:
-        200:
-          description: "Success"
+        '200':
+          description: Success
           schema:
-            $ref: "#/definitions/downloadLogfileResponse"
+            $ref: '#/definitions/downloadLogfileResponse'
         default:
-          description: "Error"
+          description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "downloadLogfile"
+            $ref: '#/definitions/ErrorResponse'
+      x-swagger-router-controller: Default
+    x-swagger-router-controller: downloadLogfile
   /swagger:
-    x-swagger-pipe: "swagger_raw"
+    x-swagger-pipe: swagger_raw
 definitions:
   clientStartResponse:
     properties:
       status:
-        type: "string"
-        description: "The status of the client.Started or Error"
+        type: string
+        description: Status of Client-Start Operation - Started or Error
     example:
-      status: "started"
+      status: started
   clientStopResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Client-Stop Operation - Stopped or Error
     example:
-      status: "status"
+      status: status
   clientStatusResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of OCf-Client - Running or Stopped or Error
     example:
-      status: "Running or Stopped"
+      status: Running or Stopped
   getVersionResponse:
     properties:
       toolVersion:
-        type: "string"
+        type: string
+        description: IOP Tool Version Used
       iotivityVersion:
-        type: "string"
+        type: string
+        description: Iotivity Version Used
       buildDateTime:
-        type: "string"
+        type: string
+        description: Build Date and Time
       os:
-        type: "string"
+        type: string
+        description: Operating System Used
       nodeVersion:
-        type: "string"
+        type: string
+        description: Node Version Used
       iotivityPatchApplied:
-        type: "string"
+        type: string
+        description: Iotivity Patche Applied
     example:
-      toolVersion: "0.8"
-      os: "Linux"
-      iotivityVersion: "1.3.1"
-      buildDateTime: "11-04-2019 16:20"
-      nodeVersion: "8.0"
-      iotivityPatchApplied: "2222"
+      toolVersion: '0.8'
+      os: Linux
+      iotivityVersion: 1.3.1
+      buildDateTime: '11-04-2019 16:20'
+      nodeVersion: '8.0'
+      iotivityPatchApplied: '2222'
   createDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Create-Device Operation
       data:
-        type: "string"
+        type: string
+        description: UUID of the Device Created
     example:
-      status: "status"
-      data: "uuid of the device created - 1111-2222-2222-22222"
+      status: status
+      data: uuid of the device created - 1111-2222-2222-22222
   deleteDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Delete-Device Operation
     example:
-      status: "success or failure"
+      status: success or failure
   otmResetDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of OTM-Reset-Device Operation
     example:
-      status: "status"
+      status: status
   shutdownDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Shutdown-Device Operation
     example:
-      status: "status"
+      status: status
   restartDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Restart-Device Operation
     example:
-      status: "status"
+      status: status
   getIPResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Get-IP Operation
       data:
-        type: "array"
+        type: array
         items:
-          type: "string"
+          type: string
+          description: IP Address of the System
     example:
-      status: "status"
+      status: status
   getNetworkDetailsResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Get-Network-Details Operation
     example:
-      status: "status"
+      status: status
   showShutdownDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Show-ShutDown-Device Operationss
       data:
-        type: "object"
+        type: object
         properties: {}
+        description: UUID of the Devices that are ShutDown Currently
     example:
-      status: "status"
+      status: status
   createCustomDeviceResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Create-Custom-Device Operation
     example:
-      status: "status"
+      status: status
   getPollingDataResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Get-Polling-Data Operation
       data:
-        type: "object"
+        type: object
         properties: {}
     example:
-      status: "string"
-      data: "object"
+      status: string
+      data: object
   getDeviceSettingDataResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Get-Device-Setting-Data Operation
       data:
-        type: "object"
+        type: object
         properties:
-            justworks:
-                type: "boolean"
-            randompin:
-                type: "boolean"
-            mfcg:
-                type: "boolean"
+          justworks:
+            type: boolean
+            description: Status of JustWorks
+          randompin:
+            type: boolean
+            description: Status of RandomPin
+          mfcg:
+            type: boolean
+            description: Status of ManufacturingCertificate
     example:
-      status: "string"
-      data: "object"
+      status: string
+      data: object
   updateOTMSupportResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Update-OTM-Support Operation
       data:
-        type: "object"
+        type: object
         properties: {}
     example:
-      status: "string"
-      data: "object"
+      status: string
+      data: object
   OTMUpdate:
-    type: "object"
+    type: object
     required:
-    - "id"
-    - "justworks"
-    - "mfCertificate"
-    - "randompin"
+      - id
+      - justworks
+      - mfCertificate
+      - randompin
     properties:
       id:
-        type: "string"
+        type: string
+        description: UUID of the Device
       justworks:
-        type: "boolean"
+        type: boolean
+        description: True or False
       randompin:
-        type: "boolean"
+        type: boolean
+        description: True or False
       mfCertificate:
-        type: "boolean"
+        type: boolean
+        description: True or False
     example:
-      mfCertificate: true
+      id: id
       justworks: true
-      id: "id"
       randompin: true
+      mfCertificate: true
   turnOffDevicesResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Turn-OFF-Devices Operation
     example:
-      status: "status"
+      status: status
+  sendPingResponse:
+    properties:
+      status:
+        type: string
+        description: Status of Send-Ping Operation
+    example:
+      status: status
   saveProfileResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Save-Profile Operation
     example:
-      status: "status"
+      status: status
   downloadProfileResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Download-Profile Operation
     example:
-      status: "status"
+      status: status
   loadProfileResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Load-Profile Operation
     example:
-      status: "status"
+      status: status
   downloadLogfileResponse:
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Download-LOG-File Operation
     example:
-      status: "status"
+      status: status
   createCustomDeviceData:
-    type: "object"
+    type: object
     required:
-    - "id"
-    - "deviceType"
+      - id
+      - deviceType
     properties:
       id:
-        type: "string"
+        type: string
+        description: UUID of the Device
       deviceType:
-        type: "string"
+        type: string
+        description: Type of the Device
     example:
-      id: "11111-2222-3333-4444-5555"
-      deviceType: "oic.d.ac"
+      id: 11111-2222-3333-4444-5555
+      deviceType: oic.d.ac
   ErrorResponse:
     required:
-    - "status"
+      - status
     properties:
       status:
-        type: "string"
+        type: string
+        description: Status of Error-Response

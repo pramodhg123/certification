@@ -19,7 +19,7 @@
   "paths": {
     "/clientStart": {
       "get": {
-        "description": "Returns OCF Client Status to the caller after starting the client. Started is the response",
+        "description": "Starts OCF in Client Mode, and Returns the Status",
         "operationId": "clientStart",
         "parameters": [],
         "responses": {
@@ -42,7 +42,7 @@
     },
     "/clientStop": {
       "get": {
-        "description": "Returns OCF Client Stop Status to the caller. Stopped or Running is the response string",
+        "description": "Stops OCF Client Mode, and Returns the Status",
         "operationId": "clientStop",
         "parameters": [],
         "responses": {
@@ -65,7 +65,7 @@
     },
     "/clientStatus": {
       "get": {
-        "description": "Returns OCF Client Status to the caller.  Stopped or Running is the response string",
+        "description": "Returns Status of OCF Client ",
         "operationId": "clientStatus",
         "parameters": [],
         "responses": {
@@ -88,7 +88,7 @@
     },
     "/getVersion": {
       "get": {
-        "description": "Returns version details of the software and OS to the caller",
+        "description": "Returns Software Version, i.e. ToolVersion, IotivityVersion, OS Used, Build Date Time",
         "operationId": "getVersion",
         "parameters": [],
         "responses": {
@@ -111,7 +111,7 @@
     },
     "/createDevice": {
       "get": {
-        "description": "Creates the device and returns the status and UUID.  deviceType is the standard device types as per OCF.Ex: oic.d.light",
+        "description": "Creates an OCF Device and Returns the Status, deviceType should be oic.d.light or other valid ones",
         "operationId": "createDevice",
         "parameters": [
           {
@@ -141,7 +141,7 @@
     },
     "/deleteDevice": {
       "get": {
-        "description": "Returns Deletion status to the caller.  Input parameter id is the uuid of the device",
+        "description": "Deletes the Device and Returns the Status, id should be the DeviceID to be Deleted",
         "operationId": "deleteDevice",
         "parameters": [
           {
@@ -171,7 +171,7 @@
     },
     "/otmResetDevice": {
       "get": {
-        "description": "Performs OTM Reset of Device and returns status to the caller. Input parameter id is the uuid of the device",
+        "description": "Performs OTM Reset of the Device and Returns the Status, id sshould be the DeviceID to be OTM Reset",
         "operationId": "otmResetDevice",
         "parameters": [
           {
@@ -201,7 +201,7 @@
     },
     "/shutdownDevice": {
       "get": {
-        "description": "Performs shutdown of the device and returns status to the caller.  Input parameter id is the uuid of the device",
+        "description": "Shutdown the Device and Return the Status, id should be DeviceID to be ShutDown",
         "operationId": "shutdownDevice",
         "parameters": [
           {
@@ -231,7 +231,7 @@
     },
     "/restartDevice": {
       "get": {
-        "description": "Restarts the device and returns status to the caller.  Input parameter id is the uuid of the device",
+        "description": "Re-Start the Device and Return the Status, id should be the DeviceID to be Restarted",
         "operationId": "restartDevice",
         "parameters": [
           {
@@ -261,7 +261,7 @@
     },
     "/getIP": {
       "get": {
-        "description": "Returns IP of the system to the caller",
+        "description": "Returns IP Address of the System, eg. 192.168:0.4, fe80::fd00",
         "operationId": "getIP",
         "parameters": [],
         "responses": {
@@ -284,7 +284,7 @@
     },
     "/getNetworkDetails": {
       "get": {
-        "description": "Returns Network details of the system to the caller",
+        "description": "Returns Network Details of the System, i.e. Details about Ethernet, WIFI, Bluetooth",
         "operationId": "getNetworkDetails",
         "parameters": [],
         "responses": {
@@ -307,7 +307,7 @@
     },
     "/showShutdownDevice": {
       "get": {
-        "description": "Returns shutdown devices of the system to the caller",
+        "description": "Returns Shutdown Devices of the System, gets DeviceID of the Devices that are ShutDown",
         "operationId": "showShutdownDevice",
         "parameters": [],
         "responses": {
@@ -330,7 +330,7 @@
     },
     "/createCustomDevice": {
       "post": {
-        "description": "Creates a custom device and returns status to the caller",
+        "description": "Creates a Custom Device and Returns the Status, createCustomDevice should be oic.d.ac or other valid ones",
         "operationId": "createCustomDevice",
         "parameters": [
           {
@@ -363,7 +363,7 @@
     },
     "/getPollingData": {
       "get": {
-        "description": "Returns polling data of the specific device to the caller.  Input parameter id is the uuid of the device",
+        "description": "Returns Polling Data of the Specific Device, i.e. Data to be sent or Received",
         "operationId": "getPollingData",
         "parameters": [
           {
@@ -393,7 +393,7 @@
     },
     "/getDeviceSettingData": {
       "get": {
-        "description": "Returns device setting data to the caller.  Input parameter id is the uuid of the device",
+        "description": "Returns Device Setting Data, i.e. Status of JustWorks, RandomPin and ManufacturingCertificate",
         "operationId": "getDeviceSettingData",
         "parameters": [
           {
@@ -423,7 +423,7 @@
     },
     "/updateOTMSupport": {
       "post": {
-        "description": "Set OTM support of the device",
+        "description": "Update OTM Support of the Device, i.e. JustWorks, RandomPin and ManufacturingCertificate",
         "operationId": "updateOTMSupport",
         "parameters": [
           {
@@ -456,7 +456,7 @@
     },
     "/turnOffDevices": {
       "get": {
-        "description": "turns off all the devices available",
+        "description": "Switch-Off the Devices Available",
         "operationId": "turnOffDevices",
         "parameters": [],
         "responses": {
@@ -477,9 +477,38 @@
       },
       "x-swagger-router-controller": "turnOffDevices"
     },
+    "/sendPing": {
+      "get": {
+        "description": "Send Ping Message, Message should have IP along with Port e.g. 192.168.0.3:5789",
+        "operationId": "sendPing",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "IP Address",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/sendPingResponse"
+              }
+            },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+              }
+            }
+        },
+        "x-swagger-router-controller": "Default"
+       },
+       "x-swagger-router-controller": "sendPing"  
+    },
     "/saveProfile": {
       "get": {
-        "description": "saves the devices available information in a json file",
+        "description": "Save the Devices Available Information in a JSON File",
         "operationId": "saveProfile",
         "parameters": [],
         "responses": {
@@ -502,7 +531,7 @@
     },
     "/downloadProfile": {
       "get": {
-        "description": "saves the devices available information in a json file",
+        "description": "Downloads the Devices Available Information in a JSON File",
         "operationId": "downloadProfile",
         "parameters": [],
         "responses": {
@@ -525,7 +554,7 @@
     },
     "/loadProfile": {
       "get": {
-        "description": "Instantiates all the devices available in the json file",
+        "description": "Instantiates all the Devices Available in the JSON File",
         "operationId": "loadProfile",
         "parameters": [],
         "responses": {
@@ -548,7 +577,7 @@
     },
     "/downloadLogfile": {
       "get": {
-        "description": "returns the log file available on the device",
+        "description": "Download the Log File",
         "operationId": "downloadLogfile",
         "parameters": [],
         "responses": {
@@ -578,7 +607,7 @@
       "properties": {
         "status": {
           "type": "string",
-          "description": "The status of the client.Started or Error"
+          "description": "Status of Client-Start Operation - Started or Error"
         }
       },
       "example": {
@@ -588,7 +617,8 @@
     "clientStopResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Client-Stop Operation - Stopped or Error"
         }
       },
       "example": {
@@ -598,7 +628,8 @@
     "clientStatusResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of OCf-Client - Running or Stopped or Error"
         }
       },
       "example": {
@@ -608,22 +639,28 @@
     "getVersionResponse": {
       "properties": {
         "toolVersion": {
-          "type": "string"
+          "type": "string",
+          "description": "IOP Tool Version Used"
         },
         "iotivityVersion": {
-          "type": "string"
+          "type": "string",
+          "description": "Iotivity Version Used"
         },
         "buildDateTime": {
-          "type": "string"
+          "type": "string",
+          "description": "Build Date and Time"
         },
         "os": {
-          "type": "string"
+          "type": "string",
+          "description": "Operating System Used"
         },
         "nodeVersion": {
-          "type": "string"
+          "type": "string",
+          "description": "Node Version Used"
         },
         "iotivityPatchApplied": {
-          "type": "string"
+          "type": "string",
+          "description": "Iotivity Patche Applied"
         }
       },
       "example": {
@@ -638,10 +675,12 @@
     "createDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Create-Device Operation"
         },
         "data": {
-          "type": "string"
+          "type": "string",
+          "description": "UUID of the Device Created"
         }
       },
       "example": {
@@ -652,7 +691,8 @@
     "deleteDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Delete-Device Operation"
         }
       },
       "example": {
@@ -662,7 +702,8 @@
     "otmResetDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of OTM-Reset-Device Operation"
         }
       },
       "example": {
@@ -672,7 +713,8 @@
     "shutdownDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Shutdown-Device Operation"
         }
       },
       "example": {
@@ -682,7 +724,8 @@
     "restartDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Restart-Device Operation"
         }
       },
       "example": {
@@ -692,12 +735,14 @@
     "getIPResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Get-IP Operation"
         },
         "data": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "description": "IP Address of the System"
           }
         }
       },
@@ -708,7 +753,8 @@
     "getNetworkDetailsResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Get-Network-Details Operation"
         }
       },
       "example": {
@@ -718,11 +764,13 @@
     "showShutdownDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Show-ShutDown-Device Operationss"
         },
         "data": {
           "type": "object",
-          "properties": {}
+          "properties": {},
+          "description": "UUID of the Devices that are ShutDown Currently"
         }
       },
       "example": {
@@ -732,17 +780,19 @@
     "createCustomDeviceResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Create-Custom-Device Operation"
         }
       },
       "example": {
-        "status": "status"
+        "status": "status",
       }
     },
     "getPollingDataResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Get-Polling-Data Operation"
         },
         "data": {
           "type": "object",
@@ -757,19 +807,23 @@
     "getDeviceSettingDataResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Get-Device-Setting-Data Operation"
         },
         "data": {
           "type": "object",
           "properties": {
             "justworks": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Status of JustWorks"
             },
             "randompin": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Status of RandomPin"
             },
             "mfcg": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Status of ManufacturingCertificate"
             }
           }
         }
@@ -782,7 +836,8 @@
     "updateOTMSupportResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Update-OTM-Support Operation"
         },
         "data": {
           "type": "object",
@@ -804,29 +859,45 @@
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "UUID of the Device"
         },
         "justworks": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "True or False"
         },
         "randompin": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "True or False"
         },
         "mfCertificate": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "True or False"
         }
       },
       "example": {
-        "mfCertificate": true,
-        "justworks": true,
         "id": "id",
-        "randompin": true
+        "justworks": true,
+        "randompin": true,
+        "mfCertificate": true
       }
     },
     "turnOffDevicesResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Turn-OFF-Devices Operation"
+        }
+      },
+      "example": {
+        "status": "status"
+      }
+    },
+   "sendPingResponse": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status of Send-Ping Operation"
         }
       },
       "example": {
@@ -836,7 +907,8 @@
     "saveProfileResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Save-Profile Operation"
         }
       },
       "example": {
@@ -846,7 +918,8 @@
     "downloadProfileResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Download-Profile Operation"
         }
       },
       "example": {
@@ -856,7 +929,8 @@
     "loadProfileResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Load-Profile Operation"
         }
       },
       "example": {
@@ -866,7 +940,8 @@
     "downloadLogfileResponse": {
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Download-LOG-File Operation"
         }
       },
       "example": {
@@ -881,10 +956,12 @@
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "UUID of the Device"
         },
         "deviceType": {
-          "type": "string"
+          "type": "string",
+          "description": "Type of the Device"
         }
       },
       "example": {
@@ -898,7 +975,8 @@
       ],
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Status of Error-Response"
         }
       }
     }

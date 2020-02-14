@@ -361,6 +361,36 @@
       },
       "x-swagger-router-controller": "createCustomDevice"
     },
+    "/createObservableDevice": {
+      "get": {
+        "description": "Creates an Observable OCF Device and Returns the Status, deviceType should be oic.d.light or other valid ones",
+        "operationId": "createObservableDevice",
+        "parameters": [
+          {
+            "name": "deviceType",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/createObservableDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-swagger-router-controller": "Default"
+      },
+      "x-swagger-router-controller": "createObservableDevice"
+    },
     "/getPollingData": {
       "get": {
         "description": "Returns Polling Data of the Specific Device, i.e. Data to be sent or Received",
@@ -786,6 +816,22 @@
       },
       "example": {
         "status": "status",
+      }
+    },
+     "createObservableDeviceResponse": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status of Create-Device Operation"
+        },
+        "data": {
+          "type": "string",
+          "description": "UUID of the Device Created"
+        }
+      },
+      "example": {
+        "status": "status",
+        "data": "uuid of the device created - 1111-2222-2222-22222"
       }
     },
     "getPollingDataResponse": {
